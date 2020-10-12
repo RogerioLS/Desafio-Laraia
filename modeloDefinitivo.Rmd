@@ -1,0 +1,152 @@
+---
+title: "Yahoo Finance"
+output: html_notebook
+---
+Bibliotecas a serem usadas
+```{r}
+install.packages("tidyverse", dependencies = T)
+install.packages("rvest",     dependencies = T)
+install.packages("tidyquant", dependencies = T)
+install.packages("janitor",   dependencies = T)
+```
+carregando os pacotes
+```{r}
+library(tidyverse)
+library(rvest)
+library(tidyquant)
+library(janitor)
+```
+vamos pegar o dia de hoje e diminuir 11 meses
+```{r}
+today = Sys.Date()
+date = today %m+% months(-11)
+print(date)
+```
+vai permitir pegar dados das 505 do mercado americano
+```{r}
+one_ticker = tq_get("^GSPC", from = date)
+one_ticker %>% 
+  head()
+```
+vamos começar o processo de raspagem
+```{r}
+url <- "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+tickers = url %>%
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="constituents"]') %>% 
+  html_table()
+tickers
+```
+vamos arrumar dois tickes mudando de "." para "-"
+```{r}
+namestickers = tickers[[1]]
+```
+
+```{r}
+namestickers = namestickers %>% 
+  mutate(Symbol = case_when(Symbol == "BRK.B" ~ "BRK-B",
+                             Symbol == "BF.B" ~ "BF-B",
+                             TRUE ~ as.character(Symbol)))
+namestickers
+```
+
+separando as siglas
+```{r}
+symbols = namestickers$Symbol
+symbols
+```
+transformando em funcao 
+```{r}
+symbols = namestickers$Symbol
+```
+
+```{r}
+get_symbols = function(ticker = "AAPL"){
+  df = tq_get(ticker, from = date)  %>%  
+      mutate(symbol = rep(ticker, length(date)))
+  return(df)
+}
+
+```
+
+```{r}
+tickers_df1 = map(symbols, get_symbols) %>% 
+  bind_rows()
+```
+
+```{r}
+tickers_df = tickers_df1 %>% 
+  left_join(sp500tickers, by = c('symbol' = 'Symbol')) %>% 
+  clean_names() %>% 
+  select(symbol:security, gics_sector, gics_sub_industry, headquarters_location)
+```
+
+```{r}
+linhas       = dim(tickers_df)[1]
+colunas      = dim(tickers_df)[2]
+dimencao     = data.frame(linhas, colunas)
+print(dimencao)
+```
+
+```{r}
+tickers_df %>% head()
+```
+Verificacao de total de tickes
+```{r}
+tickers_df %>% 
+select(symbol)%>% 
+distinct()%>% 
+count() %>% 
+select("Total de numeros de tickes" = n)
+```
+Verificando um gráfico de uma acao
+```{r}
+ticker = "CSCO"
+tickers_df %>% 
+  filter(symbol == ticker) %>% 
+  ggplot(aes(date, volume))+
+  geom_line()
+```
+mudando nome das colunas
+```{r}
+tickers_df_definitivo = rename(tickers_df, 
+                     simbolo      = symbol,
+                     dia          = date,
+                     abertura     = open,
+                     alta         = high,
+                     baixa        = low,
+                     fechamento   = close,
+                     ajustada     = adjusted,
+                     nome_empresa = security,
+                     setor        = gics_sector,
+                     insdustria   = gics_sub_industry,
+                     endereco_sede= headquarters_location)
+tickers_df_definitivo
+```
+serie temporal dia por volume
+```{r}
+ticker = "MMM"
+tickers_df_definitivo %>% 
+  filter(simbolo == ticker) %>% 
+  ggplot(aes(dia, volume))+
+  geom_line()
+```
+serie temporal dia / valor de fechamento
+```{r}
+ticker = "MMM"
+tickers_df_definitivo %>% 
+  filter(simbolo == ticker) %>% 
+  ggplot(aes(dia, fechamento))+
+  geom_line()
+```
+
+```{r}
+str(tickers_df_definitivo)
+```
+
+
+salvando em csv
+```{r}
+write.csv(tickers_df_definitivo, file = "C:\\Users\\rogerio\\Desktop\\vaga\\tabela.csv", sep = ".")
+```
+

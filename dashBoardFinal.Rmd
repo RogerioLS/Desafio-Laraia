@@ -1,0 +1,66 @@
+---
+title: "Idicarodes de Ações do 11/2019 a 10/2020"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: spacelab #
+    runtime: shiny #
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(rsconnect)
+
+setwd("C:/Users/rogerio/Documents/vaga")
+siglas <- read.csv("tickers.csv")
+```
+
+Preço ação {data-orientation=rows}
+===
+ 
+Comandos1 {.sidebar}
+---
+```{r}
+selectInput("sigla", label = "Tickers: ", choices = unique(siglas$simbolo), selected = "MMM")
+```
+ 
+Quadro01
+---
+ 
+### Preço da ação na abertura de mercado 
+```{r}
+renderPlotly({
+  grafico = filter(siglas, simbolo == input$sigla) %>%
+    ggplot(., aes(x=dia, y = abertura))+
+      geom_point()+
+        labs(x = "Dias", y="Valor abertura")+
+          theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  ggplotly(grafico)})
+```
+
+Volume de ações negociadas
+===
+ 
+Comandos2 {.sidebar}
+---
+```{r}
+ selectInput("sigla", label = "Tickers: ", choices = unique(siglas$simbolo), selected = "MMM")
+```
+ 
+Quadro2
+---
+
+### Volume de ações negociadas 
+```{r}
+renderPlotly({
+  grafico = filter(siglas, simbolo == input$sigla) %>%
+    ggplot(., aes(x=dia, y = volume))+
+      geom_point()+
+        labs(x = "Dias", y="volume de ações")+
+          theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  ggplotly(grafico)})
+ 
