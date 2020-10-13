@@ -13,7 +13,7 @@ preferencialmente a *linguagem R* e o *Shiny*. Mas você pode utilizar *Python* 
 * Tente completar o maior número de tarefas possíveis. 
 
 **O desafio consiste das seguintes etapas:**
-Dado um determinado ticker ou símbolo de uma ação, o sistema precisa obter dados financeiros do site Yahoo Finance referentes àquele ticker. 
+Dado um determinado ticket ou símbolo de uma ação, o sistema precisa obter dados financeiros do site Yahoo Finance referentes aquele ticket. 
 
 **1-** Informações da empresa:
 
