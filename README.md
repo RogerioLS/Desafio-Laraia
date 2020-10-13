@@ -1,5 +1,6 @@
-
-![Alt ou título da imagem](yahoo.png)
+<p align="center"> 
+<img src="yahoo.png">
+</p>
 
 # Proposta do case
 
@@ -45,6 +46,10 @@ processado.
 
 :x: **8-** Fazer o deployment da interface no shiny io para que seja acessível para
 público externo. 
+
+<p align="center"> 
+<img src="https://media.giphy.com/media/3oz8xTNxIYYo7sblK0/giphy.gif">
+</p>
 
 
 
