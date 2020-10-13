@@ -17,11 +17,17 @@ Dado um determinado ticker ou símbolo de uma ação, o sistema precisa obter da
 **1-** Informações da empresa:
 
 :heavy_check_mark: a. Nome completo da empresa 
+
 :heavy_check_mark: b. Endereço completo da empresa
+
 :x: c. Telefone
+
 :heavy_check_mark: d. Setor
+
 :heavy_check_mark: e. Indústria
+
 :x: f. Número de funcionários
+
 :x: g. Nome dos principais executivos
 
 :heavy_check_mark: **2-** Obter dados sobre o valor ajustado de fechamento das ações dos últimos 200 dias.
