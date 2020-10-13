@@ -7,12 +7,13 @@
 Este desafio consiste na obtenção de dados financeiros na internet para posterior processamento e análise. O intuito deste desafio é testar sua capacidade de compreender uma série de descrições de funcionalidades de um sistema e codificar
 adequadamente a solução.
 
-**Expectativa**
+**Expectativa** :white_check_mark:
 * Esperamos que a solução seja implementada utilizando
 preferencialmente a *linguagem R* e o *Shiny*. Mas você pode utilizar *Python* para algumas etapas, caso prefira. Justifique suas escolhas.
 * Tente completar o maior número de tarefas possíveis. 
 
 **O desafio consiste das seguintes etapas:**
+
 Dado um determinado ticket ou símbolo de uma ação, o sistema precisa obter dados financeiros do site Yahoo Finance referentes aquele ticket. 
 
 **1-** Informações da empresa:
