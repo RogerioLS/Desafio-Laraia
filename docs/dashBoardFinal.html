@@ -1,5 +1,5 @@
 ---
-title: "IDICADORES DE AÃ‡Ã•ES DO 08/2020 A 09/2021"
+title: "IDICADORES DE AÇÕES DO 08/2020 A 09/2021"
 output: 
   flexdashboard::flex_dashboard:
     orientation: row
@@ -9,18 +9,20 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(flexdashboard)
+library(flexdashboard) 
 library(ggplot2)
 library(plotly)
 library(dplyr)
 library(rsconnect)
 
-setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
-siglas <- read.csv("tickers.csv")
+#setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
+#siglas <- read.csv("tickers.csv")
 
+url<- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
+siglas <- read.csv(url, colClasses=c(fips="character"))
 ```
 
-PreÃ§o aÃ§Ã£o{data-icon="fa-money"}
+Preço ação{data-icon="fa-money"}
 ===
  
 Comandos1 {.sidebar}
@@ -32,7 +34,7 @@ selectInput("sigla", label <- "TICKERS: ", choices = unique(siglas$simbolo), sel
 
 Row{data-height=150}
 ---
-### MÃ©dia
+### Média
 ```{r}
 renderValueBox({
   media = siglas %>% 
@@ -42,7 +44,7 @@ renderValueBox({
 
 aidem = round(mean(media$count),2)
   
-valueBox(aidem,icon = "fa-percent", caption = "MÃ©dia", color = "orange")})
+valueBox(aidem,icon = "fa-percent", caption = "Média", color = "orange")})
 ```
 
 ### Valor Minimo
@@ -69,12 +71,12 @@ renderValueBox({
 
 omixam = round(max(maximo$count),2)
   
-valueBox(omixam, icon = "fa-level-up", caption = "MÃ¡ximo", color = "green")})
+valueBox(omixam, icon = "fa-level-up", caption = "Máximo", color = "green")})
 ```
 
 Row
 ----
-### PreÃ§o da aÃ§Ã£o na abertura de mercado 
+### Preço da ação na abertura de mercado 
 ```{r}
 renderPlotly({
   grafico = filter(siglas, simbolo == input$sigla) %>%
@@ -86,7 +88,7 @@ renderPlotly({
   ggplotly(grafico, dynamicTicks = TRUE)}) 
 ```
 
-Volume de aÃ§Ãµes negociadas {data-icon="fa-server"}
+Volume de ações negociadas {data-icon="fa-server"}
 ===
  
 Comandos2 {.sidebar}
@@ -97,7 +99,7 @@ Comandos2 {.sidebar}
  
 Row{data-height=150}
 ---
-### MÃ©dia
+### Média
 ```{r}
 renderValueBox({
   media = siglas %>% 
@@ -107,7 +109,7 @@ renderValueBox({
 
 aidem = round(mean(media$count),0)
   
-valueBox(aidem,icon = "fa-percent", caption = "MÃ©dia", color = "orange")})
+valueBox(aidem,icon = "fa-percent", caption = "Média", color = "orange")})
 ```
 
 ### Valor Minimo
@@ -134,20 +136,20 @@ renderValueBox({
 
 omixam = round(max(maximo$count),2)
   
-valueBox(omixam, icon = "fa-level-up", caption = "MÃ¡ximo", color = "green")})
+valueBox(omixam, icon = "fa-level-up", caption = "Máximo", color = "green")})
 ```
 
 
 Quadro2
 ---
 
-### Volume de aÃ§Ãµes negociadas 
+### Volume de ações negociadas 
 ```{r}
 renderPlotly({
   grafico = filter(siglas, simbolo == input$sigla_2) %>%
     ggplot(., aes(x=dia, y = volume, color = simbolo))+
       geom_point()+
-        labs(x = "Dias", y="volume de aÃ§Ãµes")+
+        labs(x = "Dias", y="volume de ações")+
           theme(axis.text.x = element_text(angle = 90, hjust = 1))
   ggplotly(grafico, dynamicTicks = TRUE)} )
 ```
