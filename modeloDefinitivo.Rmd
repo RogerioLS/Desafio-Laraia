@@ -8,6 +8,7 @@ install.packages("tidyverse", dependencies = T)
 install.packages("rvest",     dependencies = T)
 install.packages("tidyquant", dependencies = T)
 install.packages("janitor",   dependencies = T)
+install.packages("Rcpp", dependencies = T)
 ```
 carregando os pacotes
 ```{r}
@@ -15,6 +16,7 @@ library(tidyverse)
 library(rvest)
 library(tidyquant)
 library(janitor)
+library(Rcpp)
 ```
 vamos pegar o dia de hoje e diminuir 11 meses
 ```{r}
@@ -76,7 +78,7 @@ tickers_df1 = map(symbols, get_symbols) %>%
 
 ```{r}
 tickers_df = tickers_df1 %>% 
-  left_join(sp500tickers, by = c('symbol' = 'Symbol')) %>% 
+  left_join(namestickers, by = c('symbol' = 'Symbol')) %>% 
   clean_names() %>% 
   select(symbol:security, gics_sector, gics_sub_industry, headquarters_location)
 ```
@@ -147,6 +149,6 @@ str(tickers_df_definitivo)
 
 salvando em csv
 ```{r}
-write.csv(tickers_df_definitivo, file = "C:\\Users\\rogerio\\Desktop\\vaga\\tabela.csv", sep = ".")
+write.csv(tickers_df_definitivo, file = "C://Users//Rogerio Lopes//Desktop//Rogerio//DesafioLaraia//tickers.csv", sep = ".")
 ```
 

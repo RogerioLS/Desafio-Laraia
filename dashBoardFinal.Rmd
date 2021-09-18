@@ -1,10 +1,10 @@
 ---
-title: "Idicarodes de Ações do 11/2019 a 10/2020"
+title: "IDICADORES DE AÇÕES DO 08/2020 A 09/2021"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
+    orientation: row
     vertical_layout: fill
-    theme: spacelab #
+    # theme: spacelab #
     runtime: shiny #
 ---
 
@@ -15,52 +15,159 @@ library(plotly)
 library(dplyr)
 library(rsconnect)
 
-setwd("C:/Users/rogerio/Documents/vaga")
+setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
 siglas <- read.csv("tickers.csv")
+
 ```
 
-Preço ação {data-orientation=rows}
+Preço ação{data-icon="fa-money"}
 ===
  
 Comandos1 {.sidebar}
 ---
 ```{r}
-selectInput("sigla", label = "Tickers: ", choices = unique(siglas$simbolo), selected = "MMM")
+selectInput("sigla", label <- "TICKERS: ", choices = unique(siglas$simbolo), selected = "MMM")
+
 ```
- 
-Quadro01
+
+Row{data-height=150}
 ---
- 
+### Média
+```{r}
+renderValueBox({
+  media = siglas %>% 
+    filter( simbolo %in% input$sigla) %>% 
+      group_by(abertura) %>% 
+        summarise(count=sum(abertura))
+
+aidem = round(mean(media$count),2)
+  
+valueBox(aidem,icon = "fa-percent", caption = "Média", color = "orange")})
+```
+
+### Valor Minimo
+```{r}
+renderValueBox({
+  minimo = siglas %>% 
+    filter( simbolo %in% input$sigla) %>% 
+      #group_by(abertura) %>% 
+        summarise(count=min(abertura))
+
+ominim = round(min(minimo$count),2)
+  
+valueBox(ominim, icon = "fa-level-down", caption = "Minimo", color = "red")})
+```
+
+
+### Valor Maximo
+```{r}
+renderValueBox({
+  maximo = siglas %>% 
+    filter( simbolo %in% input$sigla) %>% 
+      #group_by(abertura) %>% 
+        summarise(count=max(abertura))
+
+omixam = round(max(maximo$count),2)
+  
+valueBox(omixam, icon = "fa-level-up", caption = "Máximo", color = "green")})
+```
+
+Row
+----
 ### Preço da ação na abertura de mercado 
 ```{r}
 renderPlotly({
   grafico = filter(siglas, simbolo == input$sigla) %>%
-    ggplot(., aes(x=dia, y = abertura))+
+    ggplot(., aes(x = dia, y = abertura, color = simbolo))+
       geom_point()+
-        labs(x = "Dias", y="Valor abertura")+
+        labs(x = "Dias", y = "Valor abertura")+
+          ggtitle(label = input$sigla) +
           theme(axis.text.x = element_text(angle = 90, hjust = 1))
-  ggplotly(grafico)})
+  ggplotly(grafico, dynamicTicks = TRUE)}) 
 ```
 
-Volume de ações negociadas
+Volume de ações negociadas {data-icon="fa-server"}
 ===
  
 Comandos2 {.sidebar}
 ---
 ```{r}
- selectInput("sigla", label = "Tickers: ", choices = unique(siglas$simbolo), selected = "MMM")
+ selectInput("sigla_2", label = "TICKERS: ", choices = unique(siglas$simbolo), selected = "MMM")
 ```
  
+Row{data-height=150}
+---
+### Média
+```{r}
+renderValueBox({
+  media = siglas %>% 
+    filter( simbolo %in% input$sigla_2) %>% 
+      group_by(volume) %>% 
+        summarise(count=sum(volume))
+
+aidem = round(mean(media$count),0)
+  
+valueBox(aidem,icon = "fa-percent", caption = "Média", color = "orange")})
+```
+
+### Valor Minimo
+```{r}
+renderValueBox({
+  minimo = siglas %>% 
+    filter( simbolo %in% input$sigla_2) %>% 
+      #group_by(volume) %>% 
+        summarise(count=min(volume))
+
+ominim = round(min(minimo$count),2)
+  
+valueBox(ominim, icon = "fa-level-down", caption = "Minimo", color = "red")})
+```
+
+
+### Valor Maximo
+```{r}
+renderValueBox({
+  maximo = siglas %>% 
+    filter( simbolo %in% input$sigla_2) %>% 
+      #group_by(volume) %>% 
+        summarise(count=max(volume))
+
+omixam = round(max(maximo$count),2)
+  
+valueBox(omixam, icon = "fa-level-up", caption = "Máximo", color = "green")})
+```
+
+
 Quadro2
 ---
 
 ### Volume de ações negociadas 
 ```{r}
 renderPlotly({
-  grafico = filter(siglas, simbolo == input$sigla) %>%
-    ggplot(., aes(x=dia, y = volume))+
+  grafico = filter(siglas, simbolo == input$sigla_2) %>%
+    ggplot(., aes(x=dia, y = volume, color = simbolo))+
       geom_point()+
         labs(x = "Dias", y="volume de ações")+
           theme(axis.text.x = element_text(angle = 90, hjust = 1))
-  ggplotly(grafico)})
- 
+  ggplotly(grafico, dynamicTicks = TRUE)} )
+```
+
+
+Dados Utilizados {data-icon="fa-bar-chart"}
+===
+
+Comandos2 {.sidebar}
+---
+```{r}
+ selectInput("sigla_3", label = "TICRERS: ", choices = unique(siglas$simbolo), selected = "MMM")
+```
+
+Row{data-height=150}
+---
+
+### Dados Utilizados
+```{r}
+renderTable({filter(siglas, simbolo == input$sigla_3)})
+```
+
+

@@ -1,0 +1,44 @@
+basicamente minha dica:
+
+- veja como se comporta a url do YF dado uma ação qualquer
+
+- entender como extrair do html.
+
+- Parece que eles querem que vc faca web scraping pq n lembro da API do Yahoo ter esses dados. Só lembro de ter os preços diários e tal
+
+- https://towardsdatascience.com/web-scraping-tutorial-in-r-5e71fd107f32
+
+- Foca em aprender 
+- (1) rvest pro scraping e usa as API do tidyquant para pegar os preços.
+
+- (2) googlesheets4 para salvar os dados numa.planilha na nuvem 
+- (3) dplyr, tidyr, ggplot2 e plotly para tratar os dados e gerar as visualizações (tidyverse em geral). 
+
+- (4) shiny e shinydashboard para vc construir os dashs e n precisar aprender HTML para entregar algo real
+
+
+- site de exemplo de como pegar a pagina 
+https://quantnomad.com/2020/08/06/parsing-options-quotes-from-yahoo-finance-with-r/
+
+- exemplos de como pode ser feito
+https://github.com/RomanAbashin/yahooR/blob/master/get_yahoo.R
+
+https://github.com/pysr1/medium_sp500
+https://towardsdatascience.com/exploring-the-sp500-with-r-part-1-scraping-data-acquisition-and-functional-programming-56c9498f38e8
+
+- informação para ver as empresas
+https://en.wikipedia.org/wiki/List_of_S%26P_500_companies
+
+endereço do corpo do site das 505 empresas
+//*[@id="bodyContent"]
+//*[@id="content"]
+//*[@id="constituents"]
+
+referencia de raspagem
+https://medium.com/@kyleake/wikipedia-data-scraping-with-r-rvest-in-action-3c419db9af2d
+
+C:\Users\rogerio\Desktop\vaga
+
+
+Link para a tabela excel 
+https://onedrive.live.com/view.aspx?resid=5216915518C146AB!2886&ithint=file%2cxlsx&authkey=!ADlpp44UJue_SBw
