@@ -18,15 +18,15 @@ library(plotly)
 library(dplyr)
 #library(rsconnect)
 
-#setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
-#siglas <- read.csv("tickers.csv")
+setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
+siglas <- read.csv("tickers.csv")
 
-<<<<<<< HEAD
-url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
-=======
-url<- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
->>>>>>> ab28de39e07ba41e7ffc513cc153f5e03c3a0f37
-siglas <- read.csv(url, colClasses=c(fips="character"))
+#<<<<<<< HEAD
+#url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
+#=======
+#url<- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
+#>>>>>>> ab28de39e07ba41e7ffc513cc153f5e03c3a0f37
+#siglas <- read.csv(url, colClasses=c(fips="character"))
 ```
 
 Preço ação{data-icon="fa-money"}
@@ -35,7 +35,7 @@ Preço ação{data-icon="fa-money"}
 Comandos1 {.sidebar}
 ---
 ```{r}
-selectInput("sigla", label <- "TICKERS: ", choices = unique(siglas$simbolo), selected = "MMM")
+selectInput("sigla", label <- "TICKERS: ", choices = unique(siglas$simbolo), selected = "GOOG")
 ```
 
 Row{data-height=150}
@@ -44,7 +44,7 @@ Row{data-height=150}
 ```{r}
 renderValueBox({
   media = siglas %>% 
-    filter( simbolo %in% input$sigla) %>% 
+    filter(simbolo %in% input$sigla) %>% 
       group_by(abertura) %>% 
         summarise(count=sum(abertura))
 
@@ -100,7 +100,7 @@ Volume de ações negociadas {data-icon="fa-server"}
 Comandos2 {.sidebar}
 ---
 ```{r}
- selectInput("sigla_2", label = "TICKERS: ", choices = unique(siglas$simbolo), selected = "MMM")
+ selectInput("sigla_2", label = "TICKERS: ", choices = unique(siglas$simbolo), selected = "GOOG")
 ```
  
 Row{data-height=150}
@@ -167,7 +167,7 @@ Dados Utilizados {data-icon="fa-bar-chart"}
 Comandos2 {.sidebar}
 ---
 ```{r}
- selectInput("sigla_3", label = "TICRERS: ", choices = unique(siglas$simbolo), selected = "MMM")
+ selectInput("sigla_3", label = "TICRERS: ", choices = unique(siglas$simbolo), selected = "GOOG")
 ```
 
 Row{data-height=150}

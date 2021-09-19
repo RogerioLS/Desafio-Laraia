@@ -45,7 +45,7 @@ processado.
 
 :heavy_check_mark: **7-** Implementar uma interface Shiny para apresentar os gráficos criados na tarefa anterior. O usuário deve ter a opção escolher se ele deseja visualizar ou o preço das ações ou o volume negociado. Usuário pode escolher somente um gráfico para visualizar de cada vez.
 
-:x: **8-** Fazer o deployment da interface no shiny io para que seja acessível para
+:heavy_check_mark: **8-** Fazer o deployment da interface no shiny io para que seja acessível para
 público externo. 
 
 <p align="center"> 
