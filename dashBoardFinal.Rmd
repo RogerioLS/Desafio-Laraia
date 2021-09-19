@@ -4,20 +4,25 @@ output:
   flexdashboard::flex_dashboard:
     orientation: row
     vertical_layout: fill
+    social: menu
+    source_code: embed
     # theme: spacelab #
-    runtime: shiny #
+runtime: shiny #
 ---
 
+
 ```{r setup, include=FALSE}
-library(flexdashboard)
+library(flexdashboard) 
 library(ggplot2)
 library(plotly)
 library(dplyr)
-library(rsconnect)
+#library(rsconnect)
 
-setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
-siglas <- read.csv("tickers.csv")
+#setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
+#siglas <- read.csv("tickers.csv")
 
+url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
+siglas <- read.csv(url, colClasses=c(fips="character"))
 ```
 
 Preço ação{data-icon="fa-money"}
@@ -27,7 +32,6 @@ Comandos1 {.sidebar}
 ---
 ```{r}
 selectInput("sigla", label <- "TICKERS: ", choices = unique(siglas$simbolo), selected = "MMM")
-
 ```
 
 Row{data-height=150}
