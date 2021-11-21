@@ -52,7 +52,7 @@ público externo.
 
 **Link para o dash**
 
-[Clique aqui para ser direcionado](https://step-by-step-machine-learning.herokuapp.com/)
+[Clique aqui para ser direcionado](https://rogeriols.shinyapps.io/dashBoardFinal/?_ga=2.16217078.1590712564.1632000767-1258008412.1631879477)
 
 ---
 
