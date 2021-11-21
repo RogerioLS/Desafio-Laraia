@@ -2,6 +2,8 @@
 <img src="yahoo.png">
 </p>
 
+---
+
 # Proposta do case
 
 Este desafio consiste na obtenção de dados financeiros na internet para posterior processamento e análise. O intuito deste desafio é testar sua capacidade de compreender uma série de descrições de funcionalidades de um sistema e codificar
@@ -47,6 +49,12 @@ processado.
 
 :heavy_check_mark: **8-** Fazer o deployment da interface no shiny io para que seja acessível para
 público externo. 
+
+**Link para o dash**
+
+[Clique aqui para ser direcionado](https://step-by-step-machine-learning.herokuapp.com/)
+
+---
 
 <p align="center"> 
 <img src="https://media.giphy.com/media/3oz8xTNxIYYo7sblK0/giphy.gif">

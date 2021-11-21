@@ -143,10 +143,13 @@ tickers_df_definitivo %>%
 ```{r}
 str(tickers_df_definitivo)
 ```
+```{r}
+tickers_df_definitivo[is.na(tickers_df_definitivo)] <- 0
+```
 
 
 salvando em csv
 ```{r}
-write.csv(tickers_df_definitivo, file = "E:Rogerio\\tabela.csv", sep = ".")
+write.csv(tickers_df_definitivo, file = "E:Rogerio\\tickers.csv", sep = ".")
 ```
 
