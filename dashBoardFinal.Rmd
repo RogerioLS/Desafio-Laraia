@@ -1,5 +1,5 @@
 ---
-title: "IDICADORES DE AÇÕES DO 08/2020 A 09/2021"
+title: "IDICADORES DE AÇÕES DO 03/2021 A 01/2022"
 output: 
   flexdashboard::flex_dashboard:
     orientation: row
@@ -24,7 +24,7 @@ library(dplyr)
 #<<<<<<< HEAD
 #url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
 #=======
-url<- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
+url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
 #>>>>>>> ab28de39e07ba41e7ffc513cc153f5e03c3a0f37
 siglas <- read.csv(url, colClasses=c(fips="character"))
 ```
