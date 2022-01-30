@@ -76,7 +76,7 @@ tickers_df1 = map(symbols, get_symbols) %>%
 
 ```{r}
 tickers_df = tickers_df1 %>% 
-  left_join(namestickers0, by = c('symbol' = 'Symbol')) %>% 
+  left_join(namestickers, by = c('symbol' = 'Symbol')) %>% 
   clean_names() %>% 
   select(symbol:security, gics_sector, gics_sub_industry, headquarters_location)
 ```
