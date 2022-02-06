@@ -15,7 +15,9 @@ library(tidyverse)
 library(rvest)
 library(tidyquant)
 library(janitor)
+
 ```
+
 vamos pegar o dia de hoje e diminuir 11 meses
 ```{r}
 today = Sys.Date()
@@ -150,6 +152,6 @@ tickers_df_definitivo[is.na(tickers_df_definitivo)] <- 0
 
 salvando em csv
 ```{r}
-write.csv(tickers_df_definitivo, file = "E:Rogerio\\tickers.csv", sep = ".")
+write.csv(tickers_df_definitivo, file = "C:\\Users\\Rogerio Lopes\\Desktop\\Rogerio\\DesafioLaraia\\tickers.csv", sep = ".")
 ```
 
