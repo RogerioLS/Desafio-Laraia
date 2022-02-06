@@ -16,6 +16,7 @@ library(flexdashboard)
 library(ggplot2)
 library(plotly)
 library(dplyr)
+
 #library(rsconnect)
 
 #setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
