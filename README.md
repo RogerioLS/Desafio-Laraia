@@ -1,12 +1,13 @@
 <p align="center"> 
-<img src="yahoo.png">
+<img src="foto_yahoo.png">
 </p>
+
 
 ---
 
 # Proposta do case
 
-Este desafio consiste na obtenção de dados financeiros na internet para posterior processamento e análise. O intuito deste desafio é testar sua capacidade de compreender uma série de descrições de funcionalidades de um sistema e codificar
+Este desafio consiste na obtenção de dados financeiros na internet para posterior processamento e análise. O intuito deste desafio é testar sua capacidade de compreender uma série de descrições de funcionalidades de um sistema e codificar 
 adequadamente a solução.
 
 **Expectativa** :white_check_mark:
