@@ -10,6 +10,7 @@ Este desafio consiste na obtenção de dados financeiros na internet para poster
 adequadamente a solução.
 
 **Expectativa** :white_check_mark:
+
 * Esperamos que a solução seja implementada utilizando
 preferencialmente a *linguagem R* e o *Shiny*. Mas você pode utilizar *Python* para algumas etapas, caso prefira. Justifique suas escolhas.
 * Tente completar o maior número de tarefas possíveis. 
@@ -50,7 +51,7 @@ processado.
 :heavy_check_mark: **8-** Fazer o deployment da interface no shiny io para que seja acessível para
 público externo. 
 
-**Link para o dash**
+**Link para o dash:**
 
 [Clique aqui para ser direcionado](https://rogeriols.shinyapps.io/dashBoardFinal/?_ga=2.16217078.1590712564.1632000767-1258008412.1631879477)
 
