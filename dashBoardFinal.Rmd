@@ -19,15 +19,15 @@ library(dplyr)
 
 #library(rsconnect)
 
-#setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
-#siglas <- read.csv("tickers.csv")
+setwd("C:/Users/Rogerio Lopes/Desktop/Rogerio/DesafioLaraia")
+siglas <- read.csv("tickers.csv")
 
 #<<<<<<< HEAD
 #url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
 #=======
-url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
+#url <- "https://raw.githubusercontent.com/RogerioLS/Desafio-Laraia/master/tickers.csv"
 #>>>>>>> ab28de39e07ba41e7ffc513cc153f5e03c3a0f37
-siglas <- read.csv(url, colClasses=c(fips="character"))
+#siglas <- read.csv(url, colClasses=c(fips="character"))
 ```
 
 Preço ação{data-icon="fa-money"}
